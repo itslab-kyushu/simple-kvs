@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Simple Key-Value Datastore service</title>
+    <link>https://itslab-kyushu.github.io/simple-kvs/index.xml</link>
+    <description>Recent content on Simple Key-Value Datastore service</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 08 Mar 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://itslab-kyushu.github.io/simple-kvs/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Client application</title>
+      <link>https://itslab-kyushu.github.io/simple-kvs/client/</link>
+      <pubDate>Wed, 08 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://itslab-kyushu.github.io/simple-kvs/client/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/itslab-kyushu/simple-kvs/releases/tag/v0.1.0&#34;&gt;&lt;img src=&#34;https://img.shields.io/badge/release-0.1.0-brightgreen.svg&#34; alt=&#34;Release&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;Client application provides an interface to a client/server style data storage
+service.
+This application has four commands:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;get: download a file from a server,&lt;/li&gt;
+&lt;li&gt;put: upload a file to the server,&lt;/li&gt;
+&lt;li&gt;delete: delete a file from the server,&lt;/li&gt;
+&lt;li&gt;list: show names of files stored in the server,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;and all commands connect a set of &lt;a href=&#34;../server&#34;&gt;data storage servers&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;To specify address information of those servers, all commands receives a
+configuration file in YAML.
+The configuration file has one root element &lt;code&gt;servers&lt;/code&gt; and it takes a list of
+server information, which is an object consisting of two element &lt;code&gt;address&lt;/code&gt; and
+&lt;code&gt;port&lt;/code&gt;.
+The following example defines one server in a same network:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;servers:
+  - address: 192.168.0.1
+    port: 13009
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The default name of the configuration file is &lt;code&gt;kvs.yml&lt;/code&gt; but you can set another
+name via &lt;code&gt;--config&lt;/code&gt; flag.&lt;/p&gt;
+
+&lt;h2 id=&#34;get-command&#34;&gt;Get command&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ kvs remote get --config kvs.yml --output result.dat &amp;lt;file name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Get command download the given file name from the server
+defined in the configuration file, and stores it as the given file name via
+&lt;code&gt;--output&lt;/code&gt; flag.&lt;/p&gt;
+
+&lt;p&gt;If &lt;code&gt;--config&lt;/code&gt; flag is omitted, &lt;code&gt;kvs.yml&lt;/code&gt; is used, and if &lt;code&gt;--output&lt;/code&gt; flag is
+omitted, &lt;code&gt;&amp;lt;file name&amp;gt;&lt;/code&gt; is used.&lt;/p&gt;
+
+&lt;p&gt;To find available file names, use list command.&lt;/p&gt;
+
+&lt;h2 id=&#34;put-command&#34;&gt;Put command&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ kvs remote put --config kvs.yml &amp;lt;file&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Put command reads the given file and uploads it to the server defined in the
+configuration file.&lt;/p&gt;
+
+&lt;p&gt;If &lt;code&gt;--config&lt;/code&gt; flag is omitted, &lt;code&gt;kvs.yml&lt;/code&gt; is used.&lt;/p&gt;
+
+&lt;h2 id=&#34;delete-command&#34;&gt;Delete command&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ kvs remote delete --config kvs.yml &amp;lt;file name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Delete command deletes all shares associated with the given file name from all
+servers defined in the configuration file.&lt;/p&gt;
+
+&lt;p&gt;If &lt;code&gt;--config&lt;/code&gt; flag is omitted, &lt;code&gt;kvs.yml&lt;/code&gt; is used.&lt;/p&gt;
+
+&lt;h2 id=&#34;list-command&#34;&gt;List command&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ sss remote list --config kvs.yml
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;List command shows all file names stored in the servers.
+If &lt;code&gt;--config&lt;/code&gt; flag is omitted, &lt;code&gt;kvs.yml&lt;/code&gt; is used.&lt;/p&gt;
+
+&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
+
+&lt;p&gt;If you&amp;rsquo;re a &lt;a href=&#34;http://brew.sh/&#34;&gt;Homebrew&lt;/a&gt; user,
+you can install the client application by&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ brew tap itslab-kyushu/simple-kvs
+$ brew install simple-kvs
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Compiled binaries for some platforms are available on
+&lt;a href=&#34;https://github.com/itslab-kyushu/simple-kvs/releases&#34;&gt;Github&lt;/a&gt;.
+To use these binaries, after downloading a binary to your environment, decompress and put it in a directory included in your $PATH.&lt;/p&gt;
+
+&lt;p&gt;You can also compile the client application by yourself.
+To compile it, you first download the code base:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ git clone https://github.com/itslab-kyushu/simple-kvs $GOPATH/src/itslab-kyushu/simple-kvs
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then, build the client application &lt;code&gt;kvs&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ cd $GOPATH/src/itslab-kyushu/simple-kvs/client
+$ go get -d -t -v .
+$ go build -o kvs
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To build the command, &lt;a href=&#34;https://golang.org/&#34;&gt;Go&lt;/a&gt; &amp;gt; 1.7.4 is required.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Server application</title>
+      <link>https://itslab-kyushu.github.io/simple-kvs/server/</link>
+      <pubDate>Wed, 08 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://itslab-kyushu.github.io/simple-kvs/server/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/itslab-kyushu/simple-kvs/releases/tag/v0.1.0&#34;&gt;&lt;img src=&#34;https://img.shields.io/badge/release-0.1.0-brightgreen.svg&#34; alt=&#34;Release&#34; /&gt;&lt;/a&gt;
+&lt;a href=&#34;https://hub.docker.com/r/itslabq/simple-kvs/&#34;&gt;&lt;img src=&#34;https://img.shields.io/badge/dockerhub-itslabq%2Fsimple--kvs-blue.svg&#34; alt=&#34;Dockerhub&#34; /&gt;&lt;/a&gt;
+&lt;a href=&#34;https://microbadger.com/images/itslabq/simple-kvs&#34;&gt;&lt;img src=&#34;https://images.microbadger.com/badges/image/itslabq/simple-kvs.svg&#34; alt=&#34;MicroBadger&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;Server application provides a key-value datastore service based on &lt;a href=&#34;http://www.grpc.io/&#34;&gt;gRPC&lt;/a&gt;.
+You can find the service definition in &lt;a href=&#34;https://github.com/itslab-kyushu/simple-kvs/blob/master/kvs/kvs.proto&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.grpc.io/&#34;&gt;&lt;img src=&#34;../img/grpc.png&#34; alt=&#34;gRPC&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;usage&#34;&gt;Usage&lt;/h2&gt;
+
+&lt;p&gt;The server application supports the following flags,&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--port&lt;/code&gt;: the port number the server will listen,&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--root&lt;/code&gt;: the document root path to store uploaded shares,&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--no-compress&lt;/code&gt;: if set, all shares will be stored without compression.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If those flags are omitted, default values are used.
+Thus, you can start a server by just run &lt;code&gt;kvs-server&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;docker-support&#34;&gt;Docker support&lt;/h2&gt;
+
+&lt;p&gt;A docker image to run the server, &lt;code&gt;itslabq/simple-kvs&lt;/code&gt;, is also available.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.docker.com/&#34;&gt;&lt;img src=&#34;../img/small_h-trans.png&#34; alt=&#34;docker&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Containers based on this image expose port 13009 and store uploaded shares into
+&lt;code&gt;/data&lt;/code&gt;. The following command runs a container with mapping local port 13009
+and &lt;code&gt;$(pwd)/data&lt;/code&gt; to the container&amp;rsquo;s port 13009 and &lt;code&gt;/data&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ docker run -it -p 13009:13009 -v $(pwd)/data:/data itslabq/simple-kvs
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
+
+&lt;p&gt;Compiled binaries of the server application &lt;code&gt;kvs-server&lt;/code&gt; are available on
+&lt;a href=&#34;https://github.com/itslab-kyushu/simple-kvs/releases&#34;&gt;Github&lt;/a&gt;.
+To use these binaries, after downloading a binary to your environment, decompress and put it in a directory included in your $PATH.&lt;/p&gt;
+
+&lt;p&gt;You can also compile by yourself.
+First, you need to download the code base:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ git clone https://github.com/itslab-kyushu/simple-kvs $GOPATH/src/itslab-kyushu/simple-kvs
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then, build server command &lt;code&gt;kvs-server&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ cd $GOPATH/src/itslab-kyushu/simple-kvs/server
+$ go get -d -t -v .
+$ go build -o kvs-server
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To build it, &lt;a href=&#34;https://golang.org/&#34;&gt;Go&lt;/a&gt; &amp;gt; 1.7.4 is required.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Licenses</title>
+      <link>https://itslab-kyushu.github.io/simple-kvs/licenses/</link>
+      <pubDate>Wed, 08 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://itslab-kyushu.github.io/simple-kvs/licenses/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;https://www.gnu.org/copyleft/gpl.html&#34;&gt;&lt;img src=&#34;https://img.shields.io/badge/license-GPLv3-blue.svg&#34; alt=&#34;GPLv3&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;This software is released under the GPLv3.&lt;/p&gt;
+
+&lt;p&gt;Copyright &amp;copy; 2017 Junpei Kawamoto&lt;/p&gt;
+
+&lt;p&gt;This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.&lt;/p&gt;
+
+&lt;p&gt;This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.&lt;/p&gt;
+
+&lt;p&gt;You should have received a copy of the GNU General Public License
+along with this program.  If not, see &lt;a href=&#34;http://www.gnu.org/licenses/&#34;&gt;http://www.gnu.org/licenses/&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;notices-for-libraries&#34;&gt;Notices for libraries&lt;/h2&gt;
+
+&lt;p&gt;This software uses the following open source libraries.&lt;/p&gt;
+
+&lt;h3 id=&#34;cli-https-github-com-urfave-cli&#34;&gt;&lt;a href=&#34;https://github.com/urfave/cli&#34;&gt;cli&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;Copyright &amp;copy; 2016 Jeremy Saenz &amp;amp; Contributors&lt;/p&gt;
+
+&lt;p&gt;Licensed under the MIT License.&lt;/p&gt;
+
+&lt;p&gt;Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &amp;ldquo;Software&amp;rdquo;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:&lt;/p&gt;
+
+&lt;p&gt;The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.&lt;/p&gt;
+
+&lt;p&gt;THE SOFTWARE IS PROVIDED &amp;ldquo;AS IS&amp;rdquo;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.&lt;/p&gt;
+
+&lt;h2 id=&#34;go-support-for-protocol-buffers-https-github-com-golang-protobuf&#34;&gt;&lt;a href=&#34;https://github.com/golang/protobuf&#34;&gt;Go support for Protocol Buffers&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;Copyright 2010 The Go Authors.  All rights reserved.
+&lt;a href=&#34;https://github.com/golang/protobuf&#34;&gt;https://github.com/golang/protobuf&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;* Redistributions of source code must retain the above copyright
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above
+copyright notice, this list of conditions and the following disclaimer
+in the documentation and/or other materials provided with the
+distribution.
+    * Neither the name of Google Inc. nor the names of its
+contributors may be used to endorse or promote products derived from
+this software without specific prior written permission.&lt;/p&gt;
+
+&lt;p&gt;THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+&amp;ldquo;AS IS&amp;rdquo; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.&lt;/p&gt;
+
+&lt;h2 id=&#34;grpc-go-https-github-com-grpc-grpc-go&#34;&gt;&lt;a href=&#34;https://github.com/grpc/grpc-go&#34;&gt;gRPC-Go&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;Copyright 2014, Google Inc.
+All rights reserved.&lt;/p&gt;
+
+&lt;p&gt;Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;* Redistributions of source code must retain the above copyright
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above
+copyright notice, this list of conditions and the following disclaimer
+in the documentation and/or other materials provided with the
+distribution.
+    * Neither the name of Google Inc. nor the names of its
+contributors may be used to endorse or promote products derived from
+this software without specific prior written permission.&lt;/p&gt;
+
+&lt;p&gt;THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+&amp;ldquo;AS IS&amp;rdquo; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.&lt;/p&gt;
+
+&lt;h2 id=&#34;pb-https-github-com-cheggaaa-pb&#34;&gt;&lt;a href=&#34;https://github.com/cheggaaa/pb&#34;&gt;pb&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;Copyright &amp;copy; 2012-2015, Sergey Cherepanov&lt;/p&gt;
+
+&lt;p&gt;All rights reserved.&lt;/p&gt;
+
+&lt;p&gt;Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Redistributions of source code must retain the above copyright notice, this
+list of conditions and the following disclaimer.&lt;/li&gt;
+&lt;li&gt;Redistributions in binary form must reproduce the above copyright notice, this
+list of conditions and the following disclaimer in the documentation and/or
+other materials provided with the distribution.&lt;/li&gt;
+&lt;li&gt;Neither the name of the author nor the names of its contributors may be used
+to endorse or promote products derived from this software without specific
+prior written permission.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &amp;ldquo;AS IS&amp;rdquo; AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS
+OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.&lt;/p&gt;
+
+&lt;h2 id=&#34;package-xz-https-github-com-ulikunitz-xz&#34;&gt;&lt;a href=&#34;https://github.com/ulikunitz/xz&#34;&gt;Package xz&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;Copyright &amp;copy; 2014-2016  Ulrich Kunitz
+All rights reserved.&lt;/p&gt;
+
+&lt;p&gt;Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Redistributions of source code must retain the above copyright notice, this
+list of conditions and the following disclaimer.&lt;/li&gt;
+&lt;li&gt;Redistributions in binary form must reproduce the above copyright notice,
+this list of conditions and the following disclaimer in the documentation
+and/or other materials provided with the distribution.&lt;/li&gt;
+&lt;li&gt;My name, Ulrich Kunitz, may not be used to endorse or promote products
+derived from this software without specific prior written permission.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &amp;ldquo;AS IS&amp;rdquo;
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.&lt;/p&gt;
+
+&lt;h2 id=&#34;yaml-support-for-the-go-language-https-github-com-go-yaml-yaml&#34;&gt;&lt;a href=&#34;https://github.com/go-yaml/yaml&#34;&gt;YAML support for the Go language&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;Copyright 2011-2016 Canonical Ltd.&lt;/p&gt;
+
+&lt;p&gt;Licensed under the Apache License, Version 2.0 (the &amp;ldquo;License&amp;rdquo;);
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.apache.org/licenses/LICENSE-2.0&#34;&gt;http://www.apache.org/licenses/LICENSE-2.0&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &amp;ldquo;AS IS&amp;rdquo; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Simple Key-Value Datastore Service</title>
+      <link>https://itslab-kyushu.github.io/simple-kvs/</link>
+      <pubDate>Wed, 08 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://itslab-kyushu.github.io/simple-kvs/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;https://www.gnu.org/copyleft/gpl.html&#34;&gt;&lt;img src=&#34;https://img.shields.io/badge/license-GPLv3-blue.svg&#34; alt=&#34;GPLv3&#34; /&gt;&lt;/a&gt;
+&lt;a href=&#34;https://circleci.com/gh/itslab-kyushu/simple-kvs/tree/master&#34;&gt;&lt;img src=&#34;https://circleci.com/gh/itslab-kyushu/simple-kvs/tree/master.svg?style=svg&#34; alt=&#34;CircleCI&#34; /&gt;&lt;/a&gt;
+&lt;a href=&#34;https://github.com/itslab-kyushu/simple-kvs/releases/tag/v0.1.0&#34;&gt;&lt;img src=&#34;https://img.shields.io/badge/release-0.1.0-brightgreen.svg&#34; alt=&#34;Release&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;This is a simple client/server application of a key-value datastore service.
+It includes both client and server applications.
+This software is made for comparing performance with other key-value datastore
+services using secret sharing schemes such as &lt;a href=&#34;https://itslab-kyushu.github.io/sss/&#34;&gt;sss&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;contents&#34;&gt;Contents&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;client&#34;&gt;Client application usage&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;server&#34;&gt;Server application usage&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;license&#34;&gt;License&lt;/h2&gt;
+
+&lt;p&gt;This software is released under The GNU General Public License Version 3,
+see &lt;a href=&#34;./licenses/&#34;&gt;license&lt;/a&gt; for more detail.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
