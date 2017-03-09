@@ -72,6 +72,11 @@ var Commands = []cli.Command{
 				Usage: "Server configuration `FILE`.",
 				Value: DefaultConfFile,
 			},
+			cli.StringFlag{
+				Name:  "name, n",
+				Usage: "Use given `NAME` to store the file.",
+				Value: DefaultConfFile,
+			},
 		},
 	},
 	{

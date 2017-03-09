@@ -38,6 +38,7 @@ import (
 // putOpt defines option values for cmdPut.
 type putOpt struct {
 	Filename string
+	Rename   string
 	Config   *cfg.Config
 	Log      io.Writer
 }
@@ -62,6 +63,7 @@ func CmdPut(c *cli.Context) (err error) {
 
 	return cmdPut(&putOpt{
 		Filename: c.Args().First(),
+		Rename:   c.String("name"),
 		Config:   conf,
 		Log:      output,
 	})
@@ -93,10 +95,16 @@ func cmdPut(opt *putOpt) (err error) {
 	}
 	defer conn.Close()
 
+	var name string
+	if opt.Rename != "" {
+		name = opt.Rename
+	} else {
+		name = opt.Filename
+	}
 	client := kvs.NewKvsClient(conn)
 	_, err = client.Put(context.Background(), &kvs.Entry{
 		Key: &kvs.Key{
-			Name: opt.Filename,
+			Name: name,
 		},
 		Value: &kvs.Value{
 			Value: data,
