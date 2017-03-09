@@ -50,12 +50,12 @@ var Commands = []cli.Command{
 		Action:      command.CmdGet,
 		Flags: []cli.Flag{
 			cli.StringFlag{
-				Name:  "config",
+				Name:  "config, c",
 				Usage: "Server configuration `FILE`.",
 				Value: DefaultConfFile,
 			},
 			cli.StringFlag{
-				Name:  "output",
+				Name:  "output, o",
 				Usage: "Store the downloaded file to the `FILE`.",
 			},
 		},
@@ -68,7 +68,7 @@ var Commands = []cli.Command{
 		Action:      command.CmdPut,
 		Flags: []cli.Flag{
 			cli.StringFlag{
-				Name:  "config",
+				Name:  "config, c",
 				Usage: "Server configuration `FILE`.",
 				Value: DefaultConfFile,
 			},
@@ -82,7 +82,7 @@ var Commands = []cli.Command{
 		Action:      command.CmdDelete,
 		Flags: []cli.Flag{
 			cli.StringFlag{
-				Name:  "config",
+				Name:  "config, c",
 				Usage: "Server configuration `FILE`.",
 				Value: DefaultConfFile,
 			},
@@ -96,7 +96,7 @@ var Commands = []cli.Command{
 		Action:      command.CmdList,
 		Flags: []cli.Flag{
 			cli.StringFlag{
-				Name:  "config",
+				Name:  "config, c",
 				Usage: "Server configuration `FILE`.",
 				Value: DefaultConfFile,
 			},
