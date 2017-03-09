@@ -51,7 +51,11 @@ func main() {
 	app.Copyright = `simple-kvs  Copyright (C) 2017  Junpei Kawamoto
 This program comes with ABSOLUTELY NO WARRANTY.
 This is free software, and you are welcome to redistribute it
-under certain conditions.`
+under certain conditions.
+
+See https://itslab-kyushu.github.io/simple-kvs/licenses for more
+information.
+`
 
 	app.Run(os.Args)
 }
