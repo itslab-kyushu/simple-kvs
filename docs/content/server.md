@@ -7,7 +7,7 @@ weight: 20
 description: >-
   Server application provides a key-value datastore service based on gRPC.
 ---
-[![Release](https://img.shields.io/badge/release-0.1.0-brightgreen.svg)](https://github.com/itslab-kyushu/simple-kvs/releases/tag/v0.1.0)
+[![Release](https://img.shields.io/badge/release-0.2.0-brightgreen.svg)](https://github.com/itslab-kyushu/simple-kvs/releases/tag/v0.2.0)
 [![Dockerhub](https://img.shields.io/badge/dockerhub-itslabq%2Fsimple--kvs-blue.svg)](https://hub.docker.com/r/itslabq/simple-kvs/)
 [![MicroBadger](https://images.microbadger.com/badges/image/itslabq/simple-kvs.svg)](https://microbadger.com/images/itslabq/simple-kvs)
 

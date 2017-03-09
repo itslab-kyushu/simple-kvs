@@ -14,7 +14,7 @@ description: >-
 [![GPLv3](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://www.gnu.org/copyleft/gpl.html)
 [![CircleCI](https://circleci.com/gh/itslab-kyushu/simple-kvs/tree/master.svg?style=svg)](https://circleci.com/gh/itslab-kyushu/simple-kvs/tree/master)
 [![wercker status](https://app.wercker.com/status/717adbfffa215daf21462bfa273a5a16/s/master "wercker status")](https://app.wercker.com/project/byKey/717adbfffa215daf21462bfa273a5a16)
-[![Release](https://img.shields.io/badge/release-0.1.0-brightgreen.svg)](https://github.com/itslab-kyushu/simple-kvs/releases/tag/v0.1.0)
+[![Release](https://img.shields.io/badge/release-0.2.0-brightgreen.svg)](https://github.com/itslab-kyushu/simple-kvs/releases/tag/v0.2.0)
 
 ## Summary
 This is a simple client/server application of a key-value datastore service.

@@ -12,7 +12,7 @@ description: >-
   delete is deleting a file from the server,
   and list is showing names of files stored in the server.
 ---
-[![Release](https://img.shields.io/badge/release-0.1.0-brightgreen.svg)](https://github.com/itslab-kyushu/simple-kvs/releases/tag/v0.1.0)
+[![Release](https://img.shields.io/badge/release-0.2.0-brightgreen.svg)](https://github.com/itslab-kyushu/simple-kvs/releases/tag/v0.2.0)
 
 ## Summary
 Client application provides an interface to a client/server style data storage
