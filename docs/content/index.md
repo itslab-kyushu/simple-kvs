@@ -6,7 +6,7 @@ menu:
     Name: Top
 date: 2017-03-08
 lastmod: 2017-03-08
-weight: 0
+weight: 1
 description: >-
   This software provides both a Go library and command line tools implementing
   a threshold Secret Sharing scheme.
