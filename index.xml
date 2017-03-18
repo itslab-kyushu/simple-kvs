@@ -10,6 +10,40 @@
     <atom:link href="https://itslab-kyushu.github.io/simple-kvs/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Simple Key-Value Datastore Service</title>
+      <link>https://itslab-kyushu.github.io/simple-kvs/</link>
+      <pubDate>Wed, 08 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://itslab-kyushu.github.io/simple-kvs/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;https://www.gnu.org/copyleft/gpl.html&#34;&gt;&lt;img src=&#34;https://img.shields.io/badge/license-GPLv3-blue.svg&#34; alt=&#34;GPLv3&#34; /&gt;&lt;/a&gt;
+&lt;a href=&#34;https://circleci.com/gh/itslab-kyushu/simple-kvs/tree/master&#34;&gt;&lt;img src=&#34;https://circleci.com/gh/itslab-kyushu/simple-kvs/tree/master.svg?style=svg&#34; alt=&#34;CircleCI&#34; /&gt;&lt;/a&gt;
+&lt;a href=&#34;https://app.wercker.com/project/byKey/717adbfffa215daf21462bfa273a5a16&#34;&gt;&lt;img src=&#34;https://app.wercker.com/status/717adbfffa215daf21462bfa273a5a16/s/master&#34; alt=&#34;wercker status&#34; title=&#34;wercker status&#34; /&gt;&lt;/a&gt;
+&lt;a href=&#34;https://github.com/itslab-kyushu/simple-kvs/releases/tag/v0.2.0&#34;&gt;&lt;img src=&#34;https://img.shields.io/badge/release-0.2.0-brightgreen.svg&#34; alt=&#34;Release&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;This is a simple client/server application of a key-value datastore service.
+It includes both client and server applications.
+This software is made for comparing performance with other key-value datastore
+services using secret sharing schemes such as &lt;a href=&#34;https://itslab-kyushu.github.io/sss/&#34;&gt;sss&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;contents&#34;&gt;Contents&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;client&#34;&gt;Client application usage&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;server&#34;&gt;Server application usage&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;license&#34;&gt;License&lt;/h2&gt;
+
+&lt;p&gt;This software is released under The GNU General Public License Version 3,
+see &lt;a href=&#34;./licenses/&#34;&gt;license&lt;/a&gt; for more detail.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Client application</title>
       <link>https://itslab-kyushu.github.io/simple-kvs/client/</link>
       <pubDate>Wed, 08 Mar 2017 00:00:00 +0000</pubDate>
@@ -197,6 +231,8 @@ $ go build -o kvs-server
       <guid>https://itslab-kyushu.github.io/simple-kvs/licenses/</guid>
       <description>
 
+&lt;h1 id=&#34;simple-kvs&#34;&gt;simple-kvs&lt;/h1&gt;
+
 &lt;p&gt;&lt;a href=&#34;https://www.gnu.org/copyleft/gpl.html&#34;&gt;&lt;img src=&#34;https://img.shields.io/badge/license-GPLv3-blue.svg&#34; alt=&#34;GPLv3&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;This software is released under the GPLv3.&lt;/p&gt;
@@ -253,17 +289,17 @@ SOFTWARE.&lt;/p&gt;
 modification, are permitted provided that the following conditions are
 met:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;* Redistributions of source code must retain the above copyright
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;notice, this list of conditions and the following disclaimer.
-    * Redistributions in binary form must reproduce the above
+&lt;ul&gt;
+&lt;li&gt;Redistributions of source code must retain the above copyright
+notice, this list of conditions and the following disclaimer.&lt;/li&gt;
+&lt;li&gt;Redistributions in binary form must reproduce the above
 copyright notice, this list of conditions and the following disclaimer
 in the documentation and/or other materials provided with the
-distribution.
-    * Neither the name of Google Inc. nor the names of its
+distribution.&lt;/li&gt;
+&lt;li&gt;Neither the name of Google Inc. nor the names of its
 contributors may be used to endorse or promote products derived from
-this software without specific prior written permission.&lt;/p&gt;
+this software without specific prior written permission.&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 &amp;ldquo;AS IS&amp;rdquo; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
@@ -286,17 +322,17 @@ All rights reserved.&lt;/p&gt;
 modification, are permitted provided that the following conditions are
 met:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;* Redistributions of source code must retain the above copyright
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;notice, this list of conditions and the following disclaimer.
-    * Redistributions in binary form must reproduce the above
+&lt;ul&gt;
+&lt;li&gt;Redistributions of source code must retain the above copyright
+notice, this list of conditions and the following disclaimer.&lt;/li&gt;
+&lt;li&gt;Redistributions in binary form must reproduce the above
 copyright notice, this list of conditions and the following disclaimer
 in the documentation and/or other materials provided with the
-distribution.
-    * Neither the name of Google Inc. nor the names of its
+distribution.&lt;/li&gt;
+&lt;li&gt;Neither the name of Google Inc. nor the names of its
 contributors may be used to endorse or promote products derived from
-this software without specific prior written permission.&lt;/p&gt;
+this software without specific prior written permission.&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 &amp;ldquo;AS IS&amp;rdquo; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
@@ -385,40 +421,6 @@ distributed under the License is distributed on an &amp;ldquo;AS IS&amp;rdquo; B
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Simple Key-Value Datastore Service</title>
-      <link>https://itslab-kyushu.github.io/simple-kvs/</link>
-      <pubDate>Wed, 08 Mar 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://itslab-kyushu.github.io/simple-kvs/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;https://www.gnu.org/copyleft/gpl.html&#34;&gt;&lt;img src=&#34;https://img.shields.io/badge/license-GPLv3-blue.svg&#34; alt=&#34;GPLv3&#34; /&gt;&lt;/a&gt;
-&lt;a href=&#34;https://circleci.com/gh/itslab-kyushu/simple-kvs/tree/master&#34;&gt;&lt;img src=&#34;https://circleci.com/gh/itslab-kyushu/simple-kvs/tree/master.svg?style=svg&#34; alt=&#34;CircleCI&#34; /&gt;&lt;/a&gt;
-&lt;a href=&#34;https://app.wercker.com/project/byKey/717adbfffa215daf21462bfa273a5a16&#34;&gt;&lt;img src=&#34;https://app.wercker.com/status/717adbfffa215daf21462bfa273a5a16/s/master&#34; alt=&#34;wercker status&#34; title=&#34;wercker status&#34; /&gt;&lt;/a&gt;
-&lt;a href=&#34;https://github.com/itslab-kyushu/simple-kvs/releases/tag/v0.2.0&#34;&gt;&lt;img src=&#34;https://img.shields.io/badge/release-0.2.0-brightgreen.svg&#34; alt=&#34;Release&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
-
-&lt;p&gt;This is a simple client/server application of a key-value datastore service.
-It includes both client and server applications.
-This software is made for comparing performance with other key-value datastore
-services using secret sharing schemes such as &lt;a href=&#34;https://itslab-kyushu.github.io/sss/&#34;&gt;sss&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&#34;contents&#34;&gt;Contents&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;client&#34;&gt;Client application usage&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;server&#34;&gt;Server application usage&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;license&#34;&gt;License&lt;/h2&gt;
-
-&lt;p&gt;This software is released under The GNU General Public License Version 3,
-see &lt;a href=&#34;./licenses/&#34;&gt;license&lt;/a&gt; for more detail.&lt;/p&gt;
 </description>
     </item>
     
