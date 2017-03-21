@@ -19,8 +19,22 @@ description: >-
 ## Summary
 This is a simple client/server application of a key-value datastore service.
 It includes both client and server applications.
-This software is made for comparing performance with other key-value datastore
-services using secret sharing schemes such as [sss](https://itslab-kyushu.github.io/sss/).
+This software has been made for comparing performance with other key-value
+datastore services using secret sharing schemes such as
+[cgss](https://itslab-kyushu.github.io/cgss/) and
+[sss](https://itslab-kyushu.github.io/sss/);
+the results are described in the following article:
+
+* [Hiroaki Anada](http://sun.ac.jp/prof/anada/),
+  [Junpei Kawamoto](https://www.jkawamoto.info),
+  Chenyutao Ke,
+  [Kirill Morozov](http://www.is.c.titech.ac.jp/~morozov/), and
+  [Kouichi Sakurai](http://itslab.inf.kyushu-u.ac.jp/~sakurai/),
+  "[Cross-Group Secret Sharing Scheme for Secure Usage of Cloud Storage over Different Providers and Regions](http://www.anrdoezrs.net/links/8186671/type/dlg/https://link.springer.com/article/10.1007%2Fs11227-017-2009-7),"
+  [The Journal of Supercomputing](http://www.anrdoezrs.net/links/8186671/type/dlg/https://link.springer.com/journal/11227), 2017.
+
+Please consider to refer it, if you will publish any articles using this
+software.
 
 ### Contents
 
