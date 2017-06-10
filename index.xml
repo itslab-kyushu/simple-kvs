@@ -146,7 +146,7 @@ If &lt;code&gt;--config&lt;/code&gt; flag is omitted, &lt;code&gt;kvs.yml&lt;/co
 &lt;p&gt;If you&amp;rsquo;re a &lt;a href=&#34;http://brew.sh/&#34;&gt;Homebrew&lt;/a&gt; user,
 you can install the client application by&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ brew tap itslab-kyushu/simple-kvs
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ brew tap itslab-kyushu/simple-kvs
 $ brew install simple-kvs
 &lt;/code&gt;&lt;/pre&gt;
 
