@@ -63,15 +63,21 @@ jobs:
       - run:
           name: Push the image to DockerHub
           command: |
-            echo $DOCKER_PASS > docker login -u $DOCKER_USER --password-stdin
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker push itslabq/simple-kvs
+            docker tag itslabq/simple-kvs itslabq/simple-kvs:$CIRCLE_TAG
             docker push itslabq/simple-kvs:$CIRCLE_TAG
 
 workflows:
   version: 2
   build-and-deploy:
     jobs:
-      - build
+      - build:
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              ignore: gh-pages
       - deploy:
           requires:
             - build
