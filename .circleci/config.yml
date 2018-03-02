@@ -25,13 +25,58 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Prepare dependencies
           command: |
             mkdir -p ~/.go_project/src/github.com/${CIRCLE_PROJECT_USERNAME}
             ln -s ${HOME}/${CIRCLE_PROJECT_REPONAME} ${HOME}/.go_project/src/github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}
             make get-deps
-      - run: cd server && go build -o kvs-server
-      - run: docker build --rm=false -t itslabq/simple-kvs -f dockerfile/Dockerfile .
       - run:
+          name: Build server program
+          command: cd server && go build -o kvs-server
+      - run:
+          name: Build a docker image
+          command: docker build --rm=false -t itslabq/simple-kvs -f dockerfile/Dockerfile .
+      - run:
+          name: Test the image
           command: |
             make test
             ./docker-test.sh
+      - run:
+          name: Save the image
+          command: |
+              mkdir -p ~/caches
+              docker save itslabq/simple-kvs -o ~/caches/image.tar
+      - save_cache:
+          key: docker-{% raw %}{{ .Revision }}{% endraw %}
+          paths:
+              - ~/caches/image.tar
+  deploy:
+    machine: true
+    steps:
+      - restore_cache:
+          key: docker-{% raw %}{{ .Revision }}{% endraw %}
+          paths:
+              - ~/caches/image.tar
+      - run:
+          name: Load the docker image built in build job
+          command: docker load -i ~/caches/image.tar
+      - run:
+          name: Push the image to DockerHub
+          command: |
+            echo $DOCKER_PASS > docker login -u $DOCKER_USER --password-stdin
+            docker push itslabq/simple-kvs
+            docker push itslabq/simple-kvs:$CIRCLE_TAG
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            tags:
+              only: /^v.*$/
+            branches:
+              ignore: /.*/
