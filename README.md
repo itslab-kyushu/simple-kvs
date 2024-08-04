@@ -1,20 +1,18 @@
 # Simple Key-Value Storage
 [![GPLv3](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://www.gnu.org/copyleft/gpl.html)
 [![CircleCI](https://circleci.com/gh/itslab-kyushu/simple-kvs/tree/master.svg?style=svg)](https://circleci.com/gh/itslab-kyushu/simple-kvs/tree/master)
-[![wercker status](https://app.wercker.com/status/717adbfffa215daf21462bfa273a5a16/s/master "wercker status")](https://app.wercker.com/project/byKey/717adbfffa215daf21462bfa273a5a16)
 [![Release](https://img.shields.io/badge/release-0.2.0-brightgreen.svg)](https://github.com/itslab-kyushu/simple-kvs/releases/tag/v0.2.0)
 [![Dockerhub](https://img.shields.io/badge/dockerhub-itslabq%2Fsimple--kvs-blue.svg)](https://hub.docker.com/r/itslabq/simple-kvs/)
-[![MicroBadger](https://images.microbadger.com/badges/image/itslabq/simple-kvs.svg)](https://microbadger.com/images/itslabq/simple-kvs)
 
 This software is a simple key-value storage implemented by
 [Go](https://golang.org/) using [gRPC](http://www.grpc.io/).
 This software has been made for comparing performance of secret sharing based
 key-value storages in the following article:
 
-* [Hiroaki Anada](http://sun.ac.jp/prof/anada/),
+* [Hiroaki Anada](https://sites.google.com/view/lab-hiroaki-anada/),
   [Junpei Kawamoto](https://www.jkawamoto.info),
   Chenyutao Ke,
-  [Kirill Morozov](http://www.is.c.titech.ac.jp/~morozov/), and
+  [Kirill Morozov](https://engineering.unt.edu/people/kirill-morozov.html), and
   [Kouichi Sakurai](http://itslab.inf.kyushu-u.ac.jp/~sakurai/),
   "[Cross-Group Secret Sharing Scheme for Secure Usage of Cloud Storage over Different Providers and Regions](http://www.anrdoezrs.net/links/8186671/type/dlg/https://link.springer.com/article/10.1007%2Fs11227-017-2009-7),"
   [The Journal of Supercomputing](http://www.anrdoezrs.net/links/8186671/type/dlg/https://link.springer.com/journal/11227), 2017.
