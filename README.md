@@ -14,8 +14,8 @@ key-value storages in the following article:
   Chenyutao Ke,
   [Kirill Morozov](https://engineering.unt.edu/people/kirill-morozov.html), and
   [Kouichi Sakurai](http://itslab.inf.kyushu-u.ac.jp/~sakurai/),
-  "[Cross-Group Secret Sharing Scheme for Secure Usage of Cloud Storage over Different Providers and Regions](http://www.anrdoezrs.net/links/8186671/type/dlg/https://link.springer.com/article/10.1007%2Fs11227-017-2009-7),"
-  [The Journal of Supercomputing](http://www.anrdoezrs.net/links/8186671/type/dlg/https://link.springer.com/journal/11227), 2017.
+  "[Cross-Group Secret Sharing Scheme for Secure Usage of Cloud Storage over Different Providers and Regions](https://link.springer.com/article/10.1007%2Fs11227-017-2009-7),"
+  [The Journal of Supercomputing](https://link.springer.com/journal/11227), 2017.
 
 Please consider to refer it, if you will publish any articles using this
 software.
